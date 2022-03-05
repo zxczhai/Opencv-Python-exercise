@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Apple</folder>
+	<filename>IMG_20220223_002958.jpg</filename>
+	<path>G:\PythonProjects\YOLOV3\Data Train\Apple\IMG_20220223_002958.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4000</width>
+		<height>3000</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>apple</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>2011</xmin>
+			<ymin>1146</ymin>
+			<xmax>3008</xmax>
+			<ymax>2106</ymax>
+		</bndbox>
+	</object>
+</annotation>
