@@ -8,9 +8,9 @@
 ```python
 img_rgb = cv2.imread('./checkerboard .png')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-#使用canny边缘检测显示直线
+#使用canny边缘检测显示直线,(返回为二值图像
 edges = cv2.Canny(img_gray,50,150,apertureSize=3)
-#设置识别精确度和范围
+#设置识别精确度和范围(该函数输入需为二值化图像
 lines = cv2.HoughLines(edges,1,np.pi/180,200)
 for i in range(0,len(lines)):
     for rho,theta in lines[i]:
