@@ -1,5 +1,6 @@
 import cv2 as cv
 import numpy as np
+from numpy import bitwise_not
 
 SZ=20
 bin_n = 16 # Number of bins
@@ -41,16 +42,19 @@ svm = cv.ml.SVM_load("svm_data.dat")
 cap  = cv.VideoCapture(0)
 while(True):
     # ret,frame = cap.read()
-    frame= cv.imread("num2.jpg")
-    img = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
+    frame= cv.imread("4.jpg")
+    img_gray = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
+    img  = cv.adaptiveThreshold(img_gray,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY,11,2)
+    bitwise_not(img,img)
     deskewed = deskew(img)
     hogdata = hog(deskewed)
     testData = np.float32(hogdata).reshape(-1,bin_n*4)
-    result = svm.predict(testData)[1]
+    result = svm.predict(testData)[1].ravel()
+    img = cv.resize(img,(480,640))
     cv.imshow("image",img)
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
-    print(testData)
+    print(result)
     # print(result)
 #######   Check Accuracy   ########################
 # correct = np.count_nonzero(mask)
